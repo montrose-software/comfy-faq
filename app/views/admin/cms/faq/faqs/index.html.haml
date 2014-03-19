@@ -1,0 +1,24 @@
+.page-header
+  = link_to 'New Faq', new_admin_cms_faq_path(@site), class: 'btn pull-right'
+  %h2 Faqs
+
+= paginate @faqs
+
+%table.table.table-hover.table-bordered
+  - @faqs.each do |faq|
+    %tr
+      %td.main
+        = link_to faq.label, edit_admin_cms_faq_path(@site, faq)
+        .item-meta
+          = faq.identifier
+          %br
+          = link_to '/', '/', target: '_blank'
+      %td
+        .btn-group
+          = link_to pluralize(faq.categories.count, 'Category'), admin_cms_faq_categories_path(@site, faq), class: 'btn btn-small btn-inverse'
+      %td
+        .btn-group
+          = link_to 'Edit', edit_admin_cms_faq_path(@site, faq), class: 'btn btn-small'
+          = link_to 'Delete', admin_cms_faq_path(@site, faq), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-small btn-danger'
+
+= paginate @faqs

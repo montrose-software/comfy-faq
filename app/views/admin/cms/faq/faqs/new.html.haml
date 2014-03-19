@@ -1,0 +1,5 @@
+.page-header
+  %h2 New Faq
+
+= comfy_form_for @faq, as: :faq, url: {action: :create} do |form|
+  = render form

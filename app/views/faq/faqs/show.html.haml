@@ -1,0 +1,8 @@
+- @faq.categories.each do |category|
+  %h3= category.title
+  %ol
+    - category.questions.each do |question|
+      %li= question.title
+      %ul
+        %li
+          = question.answer

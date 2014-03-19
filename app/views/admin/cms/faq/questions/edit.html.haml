@@ -1,0 +1,5 @@
+.page-header
+  %h2 Edit Faq Category Question
+
+= comfy_form_for @question, as: :question, url: {action: :update} do |form|
+  = render form
