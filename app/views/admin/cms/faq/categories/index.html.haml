@@ -6,6 +6,7 @@
 
 %table.table.table-hover.table-bordered
   %tr
+    %th Position
     %th.main Title
     %th Published
     %th Questions
@@ -13,6 +14,7 @@
 
   - @categories.each do |category|
     %tr
+      %td= category.position
       %td.main= link_to category.title, edit_admin_cms_faq_category_path(@site, @faq, category)
       %td= category.is_published.to_s
       %td
@@ -20,9 +22,11 @@
       %td
         .btn-group
           - unless category.first?
-            = link_to '&#8593;'.html_safe, move_higher_admin_cms_faq_category_path(@site, @faq, category), method: :put, class: 'btn btn-small'
+            = link_to move_higher_admin_cms_faq_category_path(@site, @faq, category), method: :put, class: 'btn btn-small' do
+              %i.icon-arrow-up
           - unless category.last?
-            = link_to '&#8595;'.html_safe, move_lower_admin_cms_faq_category_path(@site, @faq, category), method: :put, class: 'btn btn-small'
+            = link_to move_lower_admin_cms_faq_category_path(@site, @faq, category), method: :put, class: 'btn btn-small' do
+              %i.icon-arrow-down
           = link_to 'Edit', edit_admin_cms_faq_category_path(@site, @faq, category), class: 'btn btn-small'
           = link_to 'Delete', admin_cms_faq_category_path(@site, @faq, category), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-small btn-danger'
 
