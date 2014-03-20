@@ -1,0 +1,15 @@
+AllCops:
+  Includes:
+    - Rakefile
+    - config.ru
+  Excludes:
+    - db/**
+    - config/**
+    - script/**
+    - !ruby/regexp /old_and_unused\.rb$/
+
+LineLength:
+  Enabled: false
+MethodLength:
+  CountComments: false
+  Max: 20

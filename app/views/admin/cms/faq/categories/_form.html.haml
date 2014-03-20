@@ -1,0 +1,5 @@
+= form.text_field :title, data: {slugify: @category.new_record?}
+= form.check_box :is_published
+
+.form-actions
+  = form.submit class: 'btn btn-primary'

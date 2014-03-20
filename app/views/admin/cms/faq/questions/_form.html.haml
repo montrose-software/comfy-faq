@@ -1,0 +1,6 @@
+= form.text_field :title, data: {slugify: @question.new_record?}
+= form.text_area :answer
+= form.check_box :is_published
+
+.form-actions
+  = form.submit class: 'btn btn-primary'
