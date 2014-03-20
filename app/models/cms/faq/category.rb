@@ -4,7 +4,10 @@ class Cms::Faq::Category < ActiveRecord::Base
   belongs_to :faq
   acts_as_list scope: :faq
 
-  has_many :questions, order: 'position ASC'
+  has_many :questions,
+    class_name: 'Cms::Faq::Question',
+    dependent: :destroy,
+    order: 'position ASC'
 
   validates :title, :faq, presence: true
 
