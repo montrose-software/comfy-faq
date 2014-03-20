@@ -9,24 +9,22 @@ class Admin::Cms::Faq::FaqsController < Admin::Cms::Faq::BaseController
   def new
   end
 
-  def edit
-    debugger
-    p 1
-  end
-
   def create
     @faq.save!
     flash[:success] = 'Faq created'
-    redirect_to action: :edit, id: @faq
+    redirect_to admin_cms_faqs_path
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to create Faq'
     render action: :new
   end
 
+  def edit
+  end
+
   def update
     @faq.update_attributes!(faq_params)
     flash[:success] = 'Faq updated'
-    redirect_to action: :edit, id: @faq
+    redirect_to admin_cms_faqs_path
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to update Faq'
     render action: :edit
@@ -35,7 +33,7 @@ class Admin::Cms::Faq::FaqsController < Admin::Cms::Faq::BaseController
   def destroy
     @faq.destroy
     flash[:success] = 'Faq deleted'
-    redirect_to action: :index
+    redirect_to action: :edit, id: @faq
   end
 
   protected

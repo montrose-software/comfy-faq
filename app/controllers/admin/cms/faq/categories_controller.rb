@@ -34,7 +34,7 @@ class Admin::Cms::Faq::CategoriesController < Admin::Cms::Faq::BaseController
   def destroy
     @category.destroy
     flash[:success] = 'Faq Category removed'
-    redirect_to action: :index
+    redirect_to admin_cms_faq_categories_path(@faq)
   end
 
   def move_lower

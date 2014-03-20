@@ -21,7 +21,6 @@ class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
   end
 
   def edit
-    render
   end
 
   def update
@@ -36,7 +35,7 @@ class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
   def destroy
     @question.destroy
     flash[:success] = 'Faq Category Question removed'
-    redirect_to action: :index
+    redirect_to admin_cms_faq_category_questions_path(@category)
   end
 
   def move_lower
