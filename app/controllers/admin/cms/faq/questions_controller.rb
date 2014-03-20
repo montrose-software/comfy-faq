@@ -2,7 +2,7 @@ class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
   before_filter :load_faq
   before_filter :load_category
   before_filter :build_question, only: [:new, :create]
-  before_filter :load_question,  only: [:edit, :update, :destroy]
+  before_filter :load_question,  only: [:edit, :update, :destroy, :move_lower, :move_higher]
 
   def index
     @questions = @category.questions.order(:title).page(params[:page])
@@ -37,6 +37,16 @@ class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
     @question.destroy
     flash[:success] = 'Faq Category Question removed'
     redirect_to action: :index
+  end
+
+  def move_lower
+    @question.move_lower
+    redirect_to admin_cms_faq_category_questions_path(@category)
+  end
+
+  def move_higher
+    @question.move_higher
+    redirect_to admin_cms_faq_category_questions_path(@category)
   end
 
   protected

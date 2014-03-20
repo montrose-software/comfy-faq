@@ -1,3 +1,4 @@
+require 'acts_as_list'
 require_relative 'comfy_faq/version'
 require_relative 'comfy_faq/engine'
 require_relative 'comfy_faq/configuration'

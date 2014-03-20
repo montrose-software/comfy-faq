@@ -22,6 +22,7 @@ PATH
   remote: .
   specs:
     comfy_faq (0.1.0)
+      acts_as_list
       comfortable_mexican_sofa (= 1.8.5)
 
 GEM
@@ -58,6 +59,8 @@ GEM
       activesupport (= 3.1.0)
     activesupport (3.1.0)
       multi_json (~> 1.0)
+    acts_as_list (0.4.0)
+      activerecord (>= 3.0)
     arel (2.2.3)
     ast (1.1.0)
     bcrypt-ruby (3.0.1)

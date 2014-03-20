@@ -2,8 +2,9 @@ class Cms::Faq::Category < ActiveRecord::Base
   self.table_name = 'cms_faq_categories'
 
   belongs_to :faq
+  acts_as_list scope: :faq
 
-  has_many :questions
+  has_many :questions, order: 'position ASC'
 
   validates :title, :faq, presence: true
 

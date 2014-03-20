@@ -9,7 +9,16 @@ module ComfyFaq::Routing
           scope module: :faq do
             resources :faqs do
               resources :categories do
-                resources :questions, except: [:show]
+                member do
+                  put :move_lower
+                  put :move_higher
+                end
+                resources :questions, except: [:show] do
+                  member do
+                    put :move_lower
+                    put :move_higher
+                  end
+                end
               end
             end
           end

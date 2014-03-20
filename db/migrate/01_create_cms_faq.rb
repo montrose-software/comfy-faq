@@ -12,25 +12,27 @@ class CreateFaq < ActiveRecord::Migration
     add_index :cms_faqs, :identifier
 
     create_table :cms_faq_categories do |t|
-      t.integer   :faq_id,       null: false
-      t.string    :title,        null: false
-      t.boolean   :is_published, null: false, default: true
-      t.datetime  :published_at, null: false
+      t.integer :faq_id,       null: false
+      t.string  :title,        null: false
+      t.boolean :is_published, null: false, default: true
+      t.integer :position,     null: false, default: 0
       t.timestamps
     end
     add_index :cms_faq_categories, :faq_id
     add_index :cms_faq_categories, :is_published
+    add_index :cms_faq_categories, :position
 
     create_table :cms_faq_questions do |t|
-      t.integer :category_id, null: false
-      t.string  :author,              null: false
-      t.string  :email,               null: false
-      t.text    :content
-      t.boolean :is_published,        null: false, default: false
+      t.integer :category_id,  null: false
+      t.string  :title,        null: false
+      t.text    :answer,       null: false
+      t.boolean :is_published, null: false, default: false
+      t.integer :position,     null: false, default: 0
       t.timestamps
     end
     add_index :cms_faq_questions, :category_id
     add_index :cms_faq_questions, :is_published
+    add_index :cms_faq_questions, :position
   end
 
   def self.down

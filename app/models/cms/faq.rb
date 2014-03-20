@@ -5,10 +5,12 @@ class Cms::Faq < ActiveRecord::Base
 
   has_many :categories,
     class_name: 'Cms::Faq::Category',
-    dependent: :destroy
+    dependent: :destroy,
+    order: 'position ASC'
   has_many :questions,
     class_name: 'Cms::Faq::Question',
-    through: :categories
+    through: :categories,
+    order: 'position ASC'
 
   validates :site, :label, :identifier, :path, presence: true
   validates_associated :site

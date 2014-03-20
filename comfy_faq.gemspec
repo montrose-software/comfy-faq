@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 require 'comfy_faq/version'
 
@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency 'comfortable_mexican_sofa', '1.8.5'
+  s.add_dependency 'acts_as_list'
 end

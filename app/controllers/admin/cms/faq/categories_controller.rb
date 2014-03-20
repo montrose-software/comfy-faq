@@ -1,7 +1,7 @@
 class Admin::Cms::Faq::CategoriesController < Admin::Cms::Faq::BaseController
   before_filter :load_faq
   before_filter :build_category, only: [:new, :create]
-  before_filter :load_category,  only: [:edit, :update, :destroy]
+  before_filter :load_category,  only: [:edit, :update, :destroy, :move_lower, :move_higher]
 
   def index
     @categories = @faq.categories.order(:title).page(params[:page])
@@ -35,6 +35,16 @@ class Admin::Cms::Faq::CategoriesController < Admin::Cms::Faq::BaseController
     @category.destroy
     flash[:success] = 'Faq Category removed'
     redirect_to action: :index
+  end
+
+  def move_lower
+    @category.move_lower
+    redirect_to admin_cms_faq_categories_path(@faq)
+  end
+
+  def move_higher
+    @category.move_higher
+    redirect_to admin_cms_faq_categories_path(@faq)
   end
 
   protected
