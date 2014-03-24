@@ -1,5 +1,5 @@
 # ComfyFaq
-ComfyFaq is an simple faq management engine for [ComfortableMexicanSofa](https://github.com/comfy/comfortable-mexican-sofa) (for version >= 1.8).
+ComfyFaq is an simple faq management engine for [ComfortableMexicanSofa](https://github.com/comfy/comfortable-mexican-sofa) (version 1.8.x).
 
 ## Features
 
