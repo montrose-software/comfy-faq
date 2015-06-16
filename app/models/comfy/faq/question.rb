@@ -1,5 +1,5 @@
-class Cms::Faq::Question < ActiveRecord::Base
-  self.table_name = 'cms_faq_questions'
+class Comfy::Faq::Question < ActiveRecord::Base
+  self.table_name = 'comfy_faq_questions'
 
   belongs_to :category
   acts_as_list scope: :category

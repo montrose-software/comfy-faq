@@ -1,4 +1,4 @@
-class Faq::FaqsController < ApplicationController
+class Comfy::Faq::FaqsController < ApplicationController
   layout :set_faq_layout
   before_filter :load_faq
 
@@ -8,9 +8,9 @@ class Faq::FaqsController < ApplicationController
   protected
 
   def load_faq
-    @faq = Cms::Faq.find(params[:id])
+    @faq = Comfy::Faq::Faq.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    raise ActionController::RoutingError, 'Faq Not Found'
+    raise ActionController::RoutingError.new('Faq Not Found')
   end
 
   def set_faq_layout

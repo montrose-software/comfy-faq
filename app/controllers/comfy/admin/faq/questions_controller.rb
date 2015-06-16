@@ -1,4 +1,4 @@
-class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
+class Comfy::Admin::Faq::QuestionsController < Comfy::Admin::Faq::BaseController
   before_filter :load_faq
   before_filter :load_category
   before_filter :build_question, only: [:new, :create]
@@ -14,7 +14,7 @@ class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
   def create
     @question.save!
     flash[:success] = 'Faq Category Question created'
-    redirect_to admin_cms_faq_category_questions_path(@category)
+    redirect_to comfy_admin_faq_category_questions_path
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to create Faq Category Question'
     render action: :new
@@ -26,7 +26,7 @@ class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
   def update
     @question.update_attributes!(question_params)
     flash[:success] = 'Faq Category Question updated'
-    redirect_to admin_cms_faq_category_questions_path(@category)
+    redirect_to comfy_admin_faq_category_questions_path
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to update Faq Category Question'
     render action: :edit
@@ -35,17 +35,17 @@ class Admin::Cms::Faq::QuestionsController < Admin::Cms::Faq::BaseController
   def destroy
     @question.destroy
     flash[:success] = 'Faq Category Question removed'
-    redirect_to admin_cms_faq_category_questions_path(@category)
+    redirect_to comfy_admin_faq_category_questions_path
   end
 
   def move_lower
     @question.move_lower
-    redirect_to admin_cms_faq_category_questions_path(@category)
+    redirect_to comfy_admin_faq_category_questions_path
   end
 
   def move_higher
     @question.move_higher
-    redirect_to admin_cms_faq_category_questions_path(@category)
+    redirect_to comfy_admin_faq_category_questions_path
   end
 
   protected

@@ -1,0 +1,30 @@
+.page-header
+  = link_to 'New Faq Category Question', new_comfy_admin_faq_category_question_path(@site, @faq, @category), class: 'btn pull-right'
+  %h2 Faq Category Questions
+
+= paginate @questions
+
+%table.table.table-hover.table-bordered
+  %tr
+    %th Position
+    %th.main Title
+    %th Published
+    %th
+
+  - @questions.each do |question|
+    %tr
+      %td= question.position
+      %td.main= link_to question.title, edit_comfy_admin_faq_category_question_path(@site, @faq, @category, question)
+      %td= question.is_published.to_s
+      %td
+        .btn-group.btn-group-sm
+          - unless question.first?
+            = link_to move_higher_comfy_admin_faq_category_question_path(@site, @faq, @category, question), method: :put, class: 'btn btn-small' do
+              %i.icon-arrow-up
+          - unless question.last?
+            = link_to move_lower_comfy_admin_faq_category_question_path(@site, @faq, @category, question), method: :put, class: 'btn btn-small' do
+              %i.icon-arrow-down
+          = link_to 'Edit', edit_comfy_admin_faq_category_question_path(@site, @faq, @category, question), class: 'btn btn-default'
+          = link_to 'Delete', comfy_admin_faq_category_question_path(@site, @faq, @category, question), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+
+= paginate @questions

@@ -1,0 +1,7 @@
+- if @site.present? && @site.persisted?
+  %li= active_link_to 'Faqs', comfy_admin_faqs_path(@site)
+  - if @faq.present? && @faq.persisted?
+    %ul
+      %li= active_link_to 'Categories', comfy_admin_faq_categories_path(@site, @faq)
+      - if @category.present? && @category.persisted?
+        %li= active_link_to 'Questions', comfy_admin_faq_category_questions_path(@site, @faq, @category)

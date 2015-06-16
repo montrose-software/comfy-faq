@@ -20,7 +20,7 @@ module Comfy
         if destination
           puts "\e[0m\e[31mFound existing create_faq migration. Remove it if you want to regenerate.\e[0m"
         else
-          migration_template 'db/migrate/01_create_cms_faq.rb', 'db/migrate/create_cms_faq.rb'
+          migration_template 'db/migrate/01_create_faq.rb', 'db/migrate/create_faq.rb'
         end
       end
 
@@ -35,7 +35,7 @@ module Comfy
       end
 
       def generate_views
-        directory 'app/views/cms/faq', 'app/views/cms/faq'
+        directory 'app/views/comfy/faq', 'app/views/comfy/faq'
       end
 
       def show_readme

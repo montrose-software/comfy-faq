@@ -8,16 +8,16 @@ module ComfyFaq
     extend ActiveSupport::Concern
     included do
       has_many :faqs,
-        class_name: 'Cms::Faq',
+        class_name: '::Comfy::Faq::Faq',
         dependent: :destroy
     end
   end
 
   class Engine < ::Rails::Engine
     initializer 'comfy_faq.configuration' do |app|
-      ComfortableMexicanSofa::ViewHooks.add(:navigation, '/admin/cms/faq/partials/navigation')
+      ComfortableMexicanSofa::ViewHooks.add(:navigation, '/comfy/admin/faq/partials/navigation')
       config.to_prepare do
-        Cms::Site.send :include, ComfyFaq::CmsSiteExtensions
+        Comfy::Cms::Site.send :include, ComfyFaq::CmsSiteExtensions
       end
     end
   end

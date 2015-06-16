@@ -1,16 +1,13 @@
-class Cms::Faq < ActiveRecord::Base
-  self.table_name = 'cms_faqs'
+class Comfy::Faq::Faq < ActiveRecord::Base
+  self.table_name = 'comfy_faqs'
 
-  belongs_to :site, class_name: 'Cms::Site'
+  belongs_to :site, class_name: '::Comfy::Cms::Site'
 
-  has_many :categories,
-    class_name: 'Cms::Faq::Category',
-    dependent: :destroy,
-    order: 'position ASC'
-  has_many :questions,
-    class_name: 'Cms::Faq::Question',
-    through: :categories,
-    order: 'position ASC'
+  has_many :categories, -> { order('position ASC') },
+    dependent: :destroy
+
+  has_many :questions, -> { order('position ASC') },
+    through: :categories
 
   validates :site, :label, :identifier, :path, presence: true
   validates_associated :site

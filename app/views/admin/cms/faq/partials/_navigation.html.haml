@@ -1,7 +1,0 @@
-- if @site.present? && @site.persisted?
-  %li= active_link_to 'Faqs', admin_cms_faqs_path(@site)
-  - if @faq.present? && @faq.persisted?
-    %ul
-      %li= active_link_to 'Categories', admin_cms_faq_categories_path(@site, @faq)
-      - if @category.present? && @category.persisted?
-        %li= active_link_to 'Questions', admin_cms_faq_category_questions_path(@site, @faq, @category)

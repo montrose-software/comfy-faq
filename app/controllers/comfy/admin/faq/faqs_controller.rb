@@ -1,4 +1,4 @@
-class Admin::Cms::Faq::FaqsController < Admin::Cms::Faq::BaseController
+class Comfy::Admin::Faq::FaqsController < Comfy::Admin::Faq::BaseController
   before_filter :build_faq,  only: [:new, :create]
   before_filter :load_faq,   only: [:edit, :update, :destroy]
 
@@ -12,7 +12,7 @@ class Admin::Cms::Faq::FaqsController < Admin::Cms::Faq::BaseController
   def create
     @faq.save!
     flash[:success] = 'Faq created'
-    redirect_to admin_cms_faqs_path
+    redirect_to comfy_admin_faqs_path
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to create Faq'
     render action: :new
@@ -24,7 +24,7 @@ class Admin::Cms::Faq::FaqsController < Admin::Cms::Faq::BaseController
   def update
     @faq.update_attributes!(faq_params)
     flash[:success] = 'Faq updated'
-    redirect_to admin_cms_faqs_path
+    redirect_to comfy_admin_faqs_path
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to update Faq'
     render action: :edit

@@ -8,8 +8,8 @@ module ComfyFaq
   class << self
     # Modify Faq configuration
     # Example:
-    #   ComfyBlog.configure do |config|
-    #     config.posts_per_page = 5
+    #   ComfyFaq.configure do |config|
+    #     config.auto_publish_categories = true
     #   end
     def configure
       yield configuration
